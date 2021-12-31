@@ -1,0 +1,48 @@
+<div
+  id="quote-box"
+  *ngIf="selectedQuote; else elseBlock"
+  [ngStyle]="{ color: selectedColor }"
+>
+  <h3 id="text"><i class="fa fa-quote-left"> </i> {{ selectedQuote.quote }}</h3>
+  <h5 id="author">- {{ selectedQuote.author }}</h5>
+  <div class="btns">
+    <a
+      [href]="tweetQuote(selectedQuote)"
+      target="_blank"
+      id="tweet-quote"
+      aria-label="tweet button"
+    >
+      <i class="fa fa-twitter fa-2x"></i>
+    </a>
+    <button
+      [ngStyle]="{ 'background-color': selectedColor, color: 'white' }"
+      id="new-quote"
+      (click)="randomQuote()"
+    >
+      New quote
+    </button>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div id="quote-box" *ngIf="quotes[0]" [ngStyle]="{ color: selectedColor }">
+    <h3 id="text"><i class="fa fa-quote-left"> </i> {{ quotes[0].quote }}</h3>
+    <h5 id="author">- {{ quotes[0].author }}</h5>
+    <div class="btns">
+      <a
+        [href]="tweetQuote(quotes[0])"
+        target="_blank"
+        id="tweet-quote"
+        aria-label="tweet button"
+      >
+        <i class="fa fa-twitter fa-2x"></i>
+      </a>
+      <button
+        [ngStyle]="{ 'background-color': selectedColor, color: 'white' }"
+        id="new-quote"
+        (click)="randomQuote()"
+      >
+        New quote
+      </button>
+    </div>
+  </div>
+</ng-template>
